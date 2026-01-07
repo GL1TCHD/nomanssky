@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Murtaja In The Stars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="night-mode.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="night-mode.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <canvas id="space"></canvas>
+
+    <!-- Audio player with voice icon (top-left) -->
+    <div id="audio-control" aria-label="Audio player">
+      <button id="audio-btn" aria-label="Toggle audio">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path id="sound-waves" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+      </button>
+      <audio id="ambient-audio" loop>
+        <!-- Replace 'your-audio.mp3' with your own file path or URL -->
+        <source src="your-audio.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <main id="scene">
+      <div class="caption ibm-plex-sans-arabic-regular" aria-hidden="true"><a href="google.com" style="text-decoration: none; font-size: 30px;">وتحسب أنك جرم صغير ...</a></div>
+      <div id="hero" aria-label="A glowing figure peacefully flying in space" role="img">
+        <!-- Glowing white figure (SVG) -->
+        <svg id="glow-man" viewBox="0 0 200 300" width="320" height="480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1" />
+              <feMerge>
+                <feMergeNode in="blur1" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Pulsing halo around the head for "thinking" effect -->
+          <circle class="halo halo-1" cx="100" cy="62" r="30" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.7" />
+          <circle class="halo halo-2" cx="100" cy="62" r="40" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.5" />
+
+          <!-- Head -->
+          <circle class="piece head" cx="100" cy="62" r="18" />
+          <!-- Torso -->
+          <rect class="piece body" x="85" y="82" width="30" height="70" rx="16" ry="16" />
+
+          <!-- Arms -->
+          <rect class="piece arm arm-left" x="73" y="88" width="12" height="54" rx="6" />
+          <rect class="piece arm arm-right" x="115" y="88" width="12" height="54" rx="6" />
+
+          <!-- Legs -->
+          <rect class="piece leg leg-left" x="87" y="152" width="12" height="70" rx="6" />
+          <rect class="piece leg leg-right" x="101" y="152" width="12" height="70" rx="6" />
+
+          <!-- Subtle scarf-like trail to suggest motion -->
+          <path class="piece trail" d="M88 110 C 60 120, 40 140, 32 170 C 30 180, 40 188, 52 182 C 78 168, 84 142, 90 122 Z" />
+        </svg>
+      </div>
+        
+        <!-- Floating square for your text (bottom-center) -->
+        <div id="floating-square" aria-label="Floating note">
+          <div class="square-content ibm-plex-sans-arabic-regular" style="font-size: 24px;">
+في طلب العز يهون الفنا <br>
+ولا يروم العز إلا أنا
+        </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
