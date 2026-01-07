@@ -11,7 +11,7 @@
 
 .ibm-plex-sans-arabic-regular {
   font-family: "IBM Plex Sans Arabic", sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -63,6 +63,17 @@ body {
   color: rgba(255, 255, 255, 0.55);
   mix-blend-mode: screen;
   user-select: none;
+}
+
+.caption a {
+  color: inherit;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, text-shadow 0.3s ease;
+}
+
+.caption a:hover {
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(255,255,255,0.3);
 }
 
 #hero {
@@ -166,6 +177,11 @@ body {
   filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
 }
 
+#audio-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.35);
+}
+
 #audio-btn.playing #sound-waves {
   animation: soundWave 1.5s ease-in-out infinite;
 }
@@ -216,4 +232,55 @@ body {
   0%   { transform: translate(-50%, 0); }
   50%  { transform: translate(-50%, -10px); }
   100% { transform: translate(-50%, 0); }
+}
+
+/* Signature footer */
+#signature {
+  position: fixed;
+  right: 3vw;
+  bottom: 3vh;
+  z-index: 12;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  color: rgba(255,255,255,0.9);
+  font-size: clamp(12px, 1vw, 14px);
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25), 0 0 30px rgba(var(--glow), 0.12) inset;
+  opacity: 0;
+  animation: fadeIn 1.8s ease forwards 600ms;
+}
+
+#signature .separator {
+  opacity: 0.7;
+}
+
+#signature .name-ar {
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  #hero,
+  .halo-1,
+  .halo-2,
+  .arm-left,
+  .arm-right,
+  .leg-left,
+  .leg-right,
+  #floating-square,
+  #signature {
+    animation: none !important;
+  }
 }
